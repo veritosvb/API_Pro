@@ -2,18 +2,17 @@
 var topics = ["palm","beach","california","hotel","surf"];
 
 function putOnPage() {
-
-$("#botones-div").empty(); // empties out the html
-var insideList = JSON.parse(localStorage.getItem("topicsList"));
+    $("#botones-div").empty(); // empties out the html
+    var insideList = JSON.parse(localStorage.getItem("topicsList"));
 
     if (!Array.isArray(insideList)) {
         insideList = [];
         insideList = topics;
     }
- 
+
     // render our insideList todos to the page
     for (var i = 0; i < insideList.length; i++) {
-        var b = $("<button class='topic btn btn-primary shadow-lg p-3'>").text(insideList[i]).attr("data-topic", insideList[i]);
+        var b = $("<button class='topic btn btn-primary shadow-lg m-1 p-3'>").text(insideList[i]).attr("data-topic", insideList[i]);
         $("#botones-div").append(b);
     }
 }
@@ -27,43 +26,37 @@ $("#submit").on("click",function() {
     
     if(ntopic !== ""){
         localStorage.setItem("topicsList", JSON.stringify(topics));
-        var b = $("<button class='topic btn btn-primary shadow-lg p-3'>").text(ntopic).attr("data-topic", ntopic);
+        var b = $("<button class='topic btn btn-primary shadow-lg m-2 p-3'>").text(ntopic).attr("data-topic", ntopic);
         $("#botones-div").append(b);
         var ntopic = ntopic.replace(" ", "_");
         topics.push(ntopic);
-        }
+    }
 });
 
 $(document).on("click",".topic",function() {
-    var q = $(this).attr("data-topic")+"_vacation";
+    var q = $(this).attr("data-topic")+"+vacation";
     var limit = 10;
     var offset = 0;
     var rating = "";
     var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=UI65aC0WjCNEEiSHydV97XArkJCD3PRG&q=" +
     q + "&limit=" + limit + "&offset=" +offset + "&lang=en"
        
-      // Performing an AJAX request with the queryURL
+    // Performing an AJAX request with the queryURL
     $.ajax({
     url: queryURL,
     method: "GET"
     })
         // After data comes back from the request
-        .then(function(response) {
-          limit = 10;
+    .then(function(response) {
+        $("#gifs-appear-here").empty();
 
-          console.log(queryURL);
-          console.log(response);
           // storing the data from the AJAX request in the results variable
-          var results = response.data;
-          console.log(results);
+        var results = response.data;
+        console.log(results);
           // Looping through each result item
-          for (var i = 0; i < results.length; i++) {
-
-            // Creating and storing a div tag
+        for (var i = 0; i < results.length; i++) {
             var baseDiv = $("<div class= 'col-12 col-sm-6 col-md-4 col-lg-3'>");
-
-            // Creating a paragraph tag with the result item's rating
-            var p = $("<a>").text("Rating: " + results[i].rating);
+            var p = $("<h4 class='text-centered'>").text("Rating: " + results[i].rating);
 
             // Creating and storing an image tag
             var newImage = $("<img>");
@@ -72,7 +65,8 @@ $(document).on("click",".topic",function() {
             newImage.attr("data-state","animate");
             newImage.attr("data-animate",results[i].images.original.url);
             newImage.attr("data-still", results[i].images.original_still.url);
-            newImage.addClass("gif");
+            newImage.attr("alt", results[i].images.original_still.url);
+            newImage.addClass("gif m-1");
 
             // Appending the paragraph and image tag to the baseDiv
             baseDiv.append(p);
@@ -80,18 +74,14 @@ $(document).on("click",".topic",function() {
             
             // Prependng the baseDiv to the HTML page in the "#gifs-appear-here" div
             $("#gifs-appear-here").prepend(baseDiv);
-          }
-        });
+        }
     });
+});
 
 
 $(document).on("click", ".gif", function() {
-    console.log("hee");
-  // The attr jQuery method allows us to get or set the value of any attribute on our HTML element
   var state = $(this).attr("data-state");
-  // If the clicked image's state is still, update its src attribute to what its data-animate value is.
-  // Then, set the image's data-state to animate
-  // Else set src to the data-still value
+
   if (state == "still") {
     $(this).attr("src", $(this).attr("data-animate"));
     $(this).attr("data-state", "animate");

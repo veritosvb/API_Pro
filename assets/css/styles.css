@@ -21,12 +21,18 @@ body {
     border-color:#13a4dd;
   }
   
-  .btn-primary:active, .btn-primary:focus, .btn-primary:hover {
+  .btn-primary:active, .btn-primary:focus{
     background-color: #f00f80;
     border-color:  #f00f80;
     color: white;
   }
   
+  .btn-primary:hover {
+    background-color: #0ff0b8;
+    border-color:  #f00f80;
+    color: white;
+  }
+
   .btn-primary:active, .btn-primary:focus {
     box-shadow: 0 0 0 0.2rem #c0ecea !important;
   }
