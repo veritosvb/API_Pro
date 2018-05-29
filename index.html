@@ -1,24 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <title> Giphy time</title>
-</head>
+  <head>
 
-<body>
-<div id = "botones-div">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <title>Giphy Holiday Gallery</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/styles.css" rel="stylesheet">
+    <link href="assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Custom fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cookie" rel="stylesheet">
+
+  </head>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+          <a class="navbar-brand" href="#">Giphy Holiday Gallery</a>
+          <div class="" id="e">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                  <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <div class="input-group">
+                      <input id="newTheme" class="form-control" type="text" placeholder="Add search for...">
+                      <span class="input-group-append">
+                        <button id="submit" class="btn btn-primary" type="button">
+                          <i class="fa fa-search"></i>
+                        </button>
+                      </span>
+                    </div>
+                  </form>
+                </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+        <!-- Masthead -->
+  <header class="masthead text-white text-center">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-10">Time for vacation!</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+<section class="section">
+  <div class="container">
+    <div id = "botones-div">
+    </div>
+      <!-- Input Form -->
+  </div>
+</section>
+
+
+<div class="container">
+     <h1 class="my-4 text-center text-lg-left">Holiday Gallery</h1>
+    <div id="gifs-appear-here" class="row">
+
+    </div>
 </div>
-  <!-- Input Form -->
-<form>
-<span id="newBoton">New Topic: <input id="newTheme" type="text" ><input id="submit" value="Add Item" type="submit"></span>
-</form>
 
 
-<div id="gifs-appear-here">
 
-</div>
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Made by Vero Velez while in vacation</p>
+    </div>
+    <!-- /.container -->
+  </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
 <script src="assets/javascript/app.js"></script>

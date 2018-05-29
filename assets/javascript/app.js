@@ -1,5 +1,5 @@
 
-var topics = ["dog","cat","bird"];
+var topics = ["palm","beach","california","hotel","surf"];
 
 function putOnPage() {
 
@@ -9,16 +9,13 @@ var insideList = JSON.parse(localStorage.getItem("topicsList"));
     if (!Array.isArray(insideList)) {
         insideList = [];
         insideList = topics;
-
     }
  
     // render our insideList todos to the page
     for (var i = 0; i < insideList.length; i++) {
-        var b = $("<button class='topic'>").text(insideList[i]).attr("data-topic", insideList[i]);
+        var b = $("<button class='topic btn btn-primary shadow-lg p-3 mb-5'>").text(insideList[i]).attr("data-topic", insideList[i]);
         $("#botones-div").append(b);
     }
-
-
 }
           
 putOnPage();
@@ -29,15 +26,16 @@ $("#submit").on("click",function() {
     $("input[type='text']").val("");    
     
     if(ntopic !== ""){
-        topics.push(ntopic);
         localStorage.setItem("topicsList", JSON.stringify(topics));
-        var b = $("<button class='topic'>").text(ntopic).attr("data-topic", ntopic);
+        var b = $("<button class='topic btn btn-primary shadow-lg p-3 mb-5'>").text(ntopic).attr("data-topic", ntopic);
         $("#botones-div").append(b);
+        var ntopic = ntopic.replace(" ", "_");
+        topics.push(ntopic);
         }
 });
 
-$(".topic").on("click",function() {
-    var q = $(this).attr("data-topic");
+$(document).on("click",".topic",function() {
+    var q = $(this).attr("data-topic")+"_vacation";
     var limit = 10;
     var offset = 0;
     var rating = "";
@@ -62,10 +60,10 @@ $(".topic").on("click",function() {
           for (var i = 0; i < results.length; i++) {
 
             // Creating and storing a div tag
-            var baseDiv = $("<div>");
+            var baseDiv = $("<div class= 'col-3'>");
 
             // Creating a paragraph tag with the result item's rating
-            var p = $("<p>").text("Rating: " + results[i].rating);
+            var p = $("<a>").text("Rating: " + results[i].rating);
 
             // Creating and storing an image tag
             var newImage = $("<img>");
