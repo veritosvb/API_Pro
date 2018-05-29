@@ -13,7 +13,7 @@ var insideList = JSON.parse(localStorage.getItem("topicsList"));
  
     // render our insideList todos to the page
     for (var i = 0; i < insideList.length; i++) {
-        var b = $("<button class='topic btn btn-primary shadow-lg p-3 mb-5'>").text(insideList[i]).attr("data-topic", insideList[i]);
+        var b = $("<button class='topic btn btn-primary shadow-lg p-3'>").text(insideList[i]).attr("data-topic", insideList[i]);
         $("#botones-div").append(b);
     }
 }
@@ -27,7 +27,7 @@ $("#submit").on("click",function() {
     
     if(ntopic !== ""){
         localStorage.setItem("topicsList", JSON.stringify(topics));
-        var b = $("<button class='topic btn btn-primary shadow-lg p-3 mb-5'>").text(ntopic).attr("data-topic", ntopic);
+        var b = $("<button class='topic btn btn-primary shadow-lg p-3'>").text(ntopic).attr("data-topic", ntopic);
         $("#botones-div").append(b);
         var ntopic = ntopic.replace(" ", "_");
         topics.push(ntopic);
@@ -60,7 +60,7 @@ $(document).on("click",".topic",function() {
           for (var i = 0; i < results.length; i++) {
 
             // Creating and storing a div tag
-            var baseDiv = $("<div class= 'col-3'>");
+            var baseDiv = $("<div class= 'col-12 col-sm-6 col-md-4 col-lg-3'>");
 
             // Creating a paragraph tag with the result item's rating
             var p = $("<a>").text("Rating: " + results[i].rating);
